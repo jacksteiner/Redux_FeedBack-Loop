@@ -14,7 +14,8 @@ const PageTwo = () => {
         <>
         <div>
         <h3> How well are you understanding the content?</h3>
-        <input value={understanding} onChange={handleChange} className="input" type="text" />
+        <input value={understanding} onChange={handleChange} className="input" type="number" required />
+        {/* Validation goes here */}
         <button onClick={() => history.push('/page/three')} className="button">Next</button>
         </div>
         </>

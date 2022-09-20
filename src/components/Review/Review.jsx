@@ -11,19 +11,22 @@ const Review = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     
-    const handleSubmit = () => {
+
+
+    const handleReview = () => {
         axios({
-            type: 'POST',
-            url: '/',
+            // method not type
+            method: 'POST',
+            url: '/feedback',
             data: {
-                feeling,
-                understanding,
-                support,
-                comments,
+                feeling: feeling,
+                understanding: understanding,
+                support: support,
+                comments: comments,
             }
         }).then((response) => {
             dispatch({type: 'CLEAR_ALL'});
-            history.push('/')
+            history.push('/page/five')
         }).catch((error) => {
             console.log(error);
             alert('Something went wrong')
@@ -34,12 +37,12 @@ const Review = () => {
         <>
         <div>
             <ul>
-                <li>Feelings{feeling}</li>
-                <li>Understanding{understanding}</li>
-                <li>Support{support}</li>
-                <li>Comments{comments}</li>
+                <li>Feelings: {feeling}</li>
+                <li>Understanding: {understanding}</li>
+                <li>Support: {support}</li>
+                <li>Comments: {comments}</li>
             </ul>
-            <button onClick={() => {history.push('/page/five');handleSubmit();}}>Submit</button>
+            <button onClick={handleReview}>Submit</button>
         </div>
         </>
     )
